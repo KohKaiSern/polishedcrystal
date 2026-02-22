@@ -23,7 +23,24 @@
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 16
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 17
 	tilecoll FLOOR, WALL, FLOOR, FLOOR ; 18
-	tilecoll WALL, WARP_CARPET_UP, FLOOR, FLOOR ; 19
-	tilecoll WARP_CARPET_UP, WALL, FLOOR, FLOOR ; 1a
+	tilecoll WALL, STAIRCASE, FLOOR, FLOOR ; 19
+	tilecoll ELEVATOR_BUTTON, WALL, FLOOR, FLOOR ; 1a
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 1b
 	tilecoll WALL, WALL, WALL, WALL ; 1c
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 1d
+	tilecoll WALL, WALL, WALL, FLOOR ; 1e
+	tilecoll WALL, WALL, WALL, FLOOR ; 1f
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 20
+	tilecoll WALL, WALL, FLOOR, WALL ; 21
+	tilecoll WALL, WALL, FLOOR, WALL ; 22
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 23
+	tilecoll FLOOR, WALL, FLOOR, WALL ; 24
+	tilecoll WALL, FLOOR, WALL, FLOOR ; 25
+	tilecoll WALL, FLOOR, WALL, WALL ; 26
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 27
+	tilecoll WALL, WALL, FLOOR, WALL ; 28
+	tilecoll WALL, WALL, WALL, WALL ; 29
+	tilecoll WALL, FLOOR, WALL, WALL ; 2a
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 2b
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 2c
+	tilecoll FLOOR, WALL, WALL, WALL ; 2d
