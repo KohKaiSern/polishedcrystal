@@ -254,11 +254,12 @@ INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 
 
-SECTION "Underground Warehouse Scripts", ROMX
+SECTION "Goldenrod Underground Scripts", ROMX
 
-INCLUDE "maps/UndergroundWarehouse.asm"
-INCLUDE "maps/UndergroundPathSwitchRoomEntrances.asm"
-INCLUDE "maps/WarehouseEntrance.asm"
+INCLUDE "maps/GoldenrodUndergroundWarehouse.asm"
+INCLUDE "maps/GoldenrodUndergroundSwitchRoom.asm"
+INCLUDE "maps/GoldenrodUndergroundEntrances.asm"
+INCLUDE "maps/GoldenrodUnderground.asm"
 
 
 SECTION "Magnet Tunnel Scripts", ROMX

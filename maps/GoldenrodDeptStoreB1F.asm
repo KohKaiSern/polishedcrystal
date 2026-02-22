@@ -6,7 +6,7 @@ GoldenrodDeptStoreB1F_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, GoldenRodDeptStoreUnblockCallback
 
 	def_warp_events
-	warp_event 17,  2, UNDERGROUND_WAREHOUSE, 3
+	warp_event 17,  2, GOLDENROD_UNDERGROUND_WAREHOUSE, 3
 	warp_event  9,  4, GOLDENROD_DEPT_STORE_ELEVATOR, 1
 	warp_event 10,  4, GOLDENROD_DEPT_STORE_ELEVATOR, 2
 
@@ -34,9 +34,9 @@ GoldenRodDeptStoreB1FClearBoxesCallback:
 	; fallthrough
 
 .Continue:
-	checkevent EVENT_WAREHOUSE_LAYOUT_2
+	checkevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
 	iftruefwd .Layout2
-	checkevent EVENT_WAREHOUSE_LAYOUT_3
+	checkevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_3
 	iftruefwd .Layout3
 	changeblock 10, 8, $d
 	endcallback
@@ -50,7 +50,7 @@ GoldenRodDeptStoreB1FClearBoxesCallback:
 	endcallback
 
 GoldenRodDeptStoreUnblockCallback:
-	clearevent EVENT_WAREHOUSE_BLOCKED_OFF
+	clearevent EVENT_GOLDENROD_WAREHOUSE_BLOCKED_OFF
 	endcallback
 
 GoldenrodDeptStoreB1FBlackBelt1Text:
