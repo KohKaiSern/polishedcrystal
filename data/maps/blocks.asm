@@ -1403,9 +1403,9 @@ SECTION "CopycatsHouse2F_BlockData", ROMX
 CopycatsHouse2F_BlockData:
 	INCBIN "maps/CopycatsHouse2F.ablk.lzp"
 
-SECTION "Underground_BlockData", ROMX
-Underground_BlockData:
-	INCBIN "maps/Underground.ablk.lzp"
+SECTION "UndergroundPath_BlockData", ROMX
+UndergroundPath_BlockData:
+	INCBIN "maps/UndergroundPath.ablk.lzp"
 
 SECTION "PokemonTrainerFanClub_BlockData", ROMX
 PokemonTrainerFanClub_BlockData:
@@ -1687,9 +1687,9 @@ SECTION "Route6_BlockData", ROMX
 Route6_BlockData:
 	INCBIN "maps/Route6.ablk.lzp"
 
-SECTION "Route5UndergroundEntrance_BlockData", ROMX
-Route5UndergroundEntrance_BlockData:
-Route6UndergroundEntrance_BlockData:
+SECTION "Route5UndergroundPathEntrance_BlockData", ROMX
+Route5UndergroundPathEntrance_BlockData:
+Route6UndergroundPathEntrance_BlockData:
 	INCBIN "maps/UndergroundPathEntrance.ablk.lzp"
 
 SECTION "Route7_BlockData", ROMX

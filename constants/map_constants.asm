@@ -139,7 +139,7 @@ ENDM
 	map_const MOUNT_MOON_1F,                              15, 13 ; 77
 	map_const MOUNT_MOON_B1F,                             16, 14 ; 78
 	map_const MOUNT_MOON_B2F,                             16, 17 ; 79
-	map_const UNDERGROUND,                                 3, 18 ; 80
+	map_const UNDERGROUND_PATH,                            3, 18 ; 80
 	map_const ROCK_TUNNEL_1F,                             15, 14 ; 81
 	map_const ROCK_TUNNEL_B1F,                            15, 14 ; 82
 	map_const ROCK_TUNNEL_2F,                             15, 14 ; 83
@@ -310,7 +310,7 @@ ENDM
 	map_const VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE,  4,  4 ;  9
 	map_const VERMILION_GYM,                               5,  9 ; 10
 	map_const ROUTE_6_SAFFRON_GATE,                        5,  4 ; 11
-	map_const ROUTE_6_UNDERGROUND_ENTRANCE,                4,  4 ; 12
+	map_const ROUTE_6_UNDERGROUND_PATH_ENTRANCE,           4,  4 ; 12
 	map_const ROUTE_11_GATE,                               5,  5 ; 13
 	map_const ROUTE_11_GATE_2F,                            4,  4 ; 14
 	map_const VERMILION_POLLUTION_SPEECH_HOUSE,            4,  4 ; 15
@@ -569,7 +569,7 @@ ENDM
 	map_const COPYCATS_HOUSE_1F,                           4,  4 ; 10
 	map_const COPYCATS_HOUSE_2F,                           4,  3 ; 11
 	map_const ROUTE_5,                                    10, 17 ; 12
-	map_const ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 13
+	map_const ROUTE_5_UNDERGROUND_PATH_ENTRANCE,           4,  4 ; 13
 	map_const ROUTE_5_SAFFRON_CITY_GATE,                   5,  4 ; 14
 	map_const ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 15
 	map_const POKEMON_TRAINER_FAN_CLUB,                    6,  9 ; 16
