@@ -23,16 +23,6 @@ Update WSL's software before continuing. For example, if you chose Debian, Ubunt
 apt-get update && apt-get upgrade
 ```
 
-WSL has its own file system that's not accessible from Windows, but Windows files *are* accessible from WSL. So you're going to want to install polishedcrystal within Windows. You'll have to change the **current working directory** every time you open WSL.
-
-For example, if you want to store polishedcrystal in **C:\Users\\*\<user>*\Desktop**, enter this command:
-
-```bash
-cd /mnt/c/Users/<user>/Desktop
-```
-
-(The Windows `C:\` drive is called `/mnt/c/` in WSL. Replace *\<user>* in the example path with your username.)
-
 Then, follow [the instructions for **Linux**](#linux) below for whatever distribution you installed for WSL.
 
 ## Windows (8 & Older)
@@ -55,7 +45,7 @@ Now you're ready to [build **polishedcrystal**](#build-polishedcrystal).
 
 ## Linux
 
-Regardless of distro choice, the endgoal here is to install the following software:
+Regardless of distro choice, the goal here is to install the following software:
 - `make`
 - `gcc` (or `clang`)
 - `git`
