@@ -1,11 +1,13 @@
 # Install Guide
 
-If you just want to play Polished Crystal, install the .gbc file directly from the [latest release](https://github.com/Rangi42/polishedcrystal/releases/latest). To build a ROM yourself from the source code, follow these instructions. The instructions below first provide installation guides for the tools required to build the ROM, then provide the actual ROM building instructions.
-
 > You know it's sitting back and looking at it that you realize that Gamefreak are actually really good devs.  
 > Like you have Pokemon and it's a simple formula "How can you fuck it up?" and then all of these Romhacks basically go "Like this."
 >
 > — Anonymous, [/vp/](https://boards.4channel.org/vp/)
+
+If you just want to play Polished Crystal, install the .gbc file directly from the [latest release](https://github.com/Rangi42/polishedcrystal/releases/latest).
+
+To build a ROM yourself from the source code, follow the instructions below. They first provide installation guides for the tools required to build the ROM, then provide the actual ROM building instructions.
 
 Operating Systems:
 - [Windows (10 & Newer)](#windows-10--newer)
