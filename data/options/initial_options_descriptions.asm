@@ -102,18 +102,16 @@ InitialOptionDescriptions:
 	prompt
 
 .RTC:
-	text "Use the Real-Time"
-	line "Clock function to"
-	cont "track the time."
+	text "Set the in-game"
+	line "clock speed."
 
-	para "If your cartridge"
-	line "or emulator does"
-	cont "not support RTC,"
+	para "RTC uses the cart"
+	line "Real-Time Clock."
+	cont "x6/x12/x24 run"
 
-	assert NO_RTC_SPEEDUP == 6
-	para "disable this to"
-	line "make each in-game"
-	cont "day last 4 hours."
+	para "the clock faster"
+	line "without hardware"
+	cont "RTC support."
 	prompt
 
 .PerfectIVs:

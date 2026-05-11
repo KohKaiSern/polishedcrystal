@@ -116,10 +116,16 @@ DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_I
 ; wInitialOptions2::
 	const_def 2
 	const NO_EXP_OPT           ; 2
-	const RTC_OPT              ; 3
+	const RTC_OPT              ; 3 (1 = hardware Real-Time Clock)
 	const EVOLVE_IN_BATTLE_OPT ; 4
-	const_skip 2
+	const_skip 2               ; 5-6: CLOCK_SPEED_MASK
 	const RESET_INIT_OPTS      ; 7
+DEF CLOCK_SPEED_MASK EQU %01100000
+	const_def
+	const CLOCK_SPEED_X6   ; 0 - 6 fake seconds per real second (default)
+	const CLOCK_SPEED_X12  ; 1 - 12 fake seconds per real second
+	const CLOCK_SPEED_X24  ; 2 - 24 fake seconds per real second
+DEF CLOCK_SPEED_COUNT EQU const_value ; number of no-RTC speed options (= 3)
 
 	const_def
 	const EVS_OPT_DISABLED ; %00

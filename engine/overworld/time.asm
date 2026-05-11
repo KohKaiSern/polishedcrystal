@@ -41,7 +41,7 @@ NextCallReceiveDelay:
 .ReceiveCallDelays:
 	db 20, 10, 5, 3
 .ReceiveCallDelaysNoRTC:
-	db 20 * NO_RTC_SPEEDUP, 10 * NO_RTC_SPEEDUP, 5 * NO_RTC_SPEEDUP, 3 * NO_RTC_SPEEDUP
+	db 20 * CLOCK_X6_SPEEDUP, 10 * CLOCK_X6_SPEEDUP, 5 * CLOCK_X6_SPEEDUP, 3 * CLOCK_X6_SPEEDUP
 
 CheckReceiveCallTimer:
 	call CheckReceiveCallDelay ; check timer
@@ -181,14 +181,36 @@ Special_SampleKenjiBreakCountdown:
 
 StartBugContestTimer:
 	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
-	ld a, BUG_CONTEST_MINUTES
+	bit RTC_OPT, a
 	jr nz, .using_rtc
-	ld a, BUG_CONTEST_MINUTES * NO_RTC_SPEEDUP
-.using_rtc
+	and CLOCK_SPEED_MASK
+rept TZCOUNT(CLOCK_SPEED_MASK)
+	rrca
+endr
+	ld c, a
+	ld b, 0
+	ld hl, .NoRTCMinutes
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
 	ld [wBugContestMinsRemaining], a
+	ld a, [hl]
+	ld [wBugContestMinsRemaining + 1], a
+	jr .start_timer
+
+.using_rtc
+	ld a, BUG_CONTEST_MINUTES
+	ld [wBugContestMinsRemaining], a
+	xor a
+	ld [wBugContestMinsRemaining + 1], a
+.start_timer
 	xor a ; BUG_CONTEST_SECONDS
 	ld [wBugContestSecsRemaining], a
+
+.NoRTCMinutes:
+	dw BUG_CONTEST_MINUTES * CLOCK_X6_SPEEDUP
+	dw BUG_CONTEST_MINUTES * CLOCK_X12_SPEEDUP
+	dw BUG_CONTEST_MINUTES * CLOCK_X24_SPEEDUP
 	call UpdateTime
 	ld hl, wBugContestStartTime
 	ld a, [wCurDay]
@@ -221,16 +243,20 @@ CheckBugContestTimer::
 	ld [wBugContestSecsRemaining], a
 	ld a, [wMinutesSince]
 	ld b, a
-	ld a, [wBugContestMinsRemaining]
+	ld hl, wBugContestMinsRemaining
+	ld a, [hli]
 	sbc b
-	ld [wBugContestMinsRemaining], a
-	jr c, .timed_out
-	and a
-	ret
+	ld d, a
+	ld a, [hl]
+	sbc 0           ; no-optimize a = X +/- carry
+	ld [hld], a
+	ld [hl], d
+	ret nc
 
 .timed_out
 	xor a
 	ld [wBugContestMinsRemaining], a
+	ld [wBugContestMinsRemaining + 1], a
 	ld [wBugContestSecsRemaining], a
 	scf
 	ret

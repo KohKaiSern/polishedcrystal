@@ -58,16 +58,24 @@ UpdateGameTimer::
 	xor a
 	ld [hl], a
 
-; kroc - no-RTC patch
-; the game timer has increased by 1 second; increase the "fake" RTC by 6 seconds
-; (24 in-game hours will pass in 4 real-world hours)
-; this does not affect the rate of the "hours played", which remains real-time
+; advance the fake RTC by the configured speedup factor every real second
+; this does not affect the "hours played" counter, which remains real-time
 	ld a, [wInitialOptions2]
-	and 1 << RTC_OPT
+	bit RTC_OPT, a
 	jr nz, .using_rtc
-rept NO_RTC_SPEEDUP
-	call UpdateNoRTC
+	and CLOCK_SPEED_MASK
+rept TZCOUNT(CLOCK_SPEED_MASK)
+	rrca
 endr
+	ld c, a
+	ld b, 0
+	ld hl, .ClockSpeedups
+	add hl, bc
+	ld c, [hl]
+.no_rtc_loop
+	call UpdateNoRTC
+	dec c
+	jr nz, .no_rtc_loop
 .using_rtc
 
 ; +1 second
@@ -130,6 +138,9 @@ endr
 	ld a, l
 	ld [wGameTimeHours + 1], a
 	ret
+
+.ClockSpeedups:
+	db CLOCK_X6_SPEEDUP, CLOCK_X12_SPEEDUP, CLOCK_X24_SPEEDUP
 
 ;; add a second to the no-RTC fake real-time clock
 UpdateNoRTC::

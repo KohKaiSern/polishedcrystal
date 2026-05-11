@@ -991,10 +991,10 @@ wTimeCyclesSinceLastCall:: db
 wReceiveCallDelay_MinsRemaining:: db
 wReceiveCallDelay_StartTime:: ds 3
 
-wBugContestMinsRemaining:: db
+wBugContestMinsRemaining:: dw
 wBugContestSecsRemaining:: db
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 wMapStatusEnd::
 

@@ -289,23 +289,71 @@ InitialOptions_AffectionBonus:
 
 InitialOptions_RTC:
 	ld hl, wInitialOptions2
+; map {RTC_OPT=1} to index 3, {RTC_OPT=0, speed N} to index N
+	ld a, [hl]
+	bit RTC_OPT, a
+	jr nz, .IsRTC
+	and CLOCK_SPEED_MASK
+rept TZCOUNT(CLOCK_SPEED_MASK)
+	rrca
+endr
+	ld c, a
+	jr .GotState
+.IsRTC:
+	ld c, CLOCK_SPEED_COUNT
+.GotState:
 	ldh a, [hJoyPressed]
-	and PAD_LEFT | PAD_RIGHT
-	jr nz, .Toggle
-	bit RTC_OPT, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle:
-	bit RTC_OPT, [hl]
-	jr z, .SetYes
-.SetNo:
-	res RTC_OPT, [hl]
-	ld de, NoString
+	bit B_PAD_LEFT, a
+	jr nz, .LeftPressed
+	bit B_PAD_RIGHT, a
+	jr z, .Display
+	inc c
+	jr .ClampState
+.LeftPressed:
+	dec c
+.ClampState:
+	ld a, c
+; 255 & CLOCK_SPEED_COUNT wraps unsigned underflow (dec c when c=0) back to RTC
+	and CLOCK_SPEED_COUNT
+	ld c, a
+	ld a, [hl]
+	and ~((1 << RTC_OPT) | CLOCK_SPEED_MASK)
+	ld b, a
+	ld a, c
+	cp CLOCK_SPEED_COUNT
+	jr z, .SaveRTC
+rept TZCOUNT(CLOCK_SPEED_MASK)
+	rlca
+endr
+	or b
+	ld [hl], a
+	jr .Display
+.SaveRTC:
+	ld a, b
+	or 1 << RTC_OPT
+	ld [hl], a
+.Display:
+	ld b, 0
+	ld hl, .Strings
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
 	jmp OptionsShared_PlaceStringAtValueCoord
-.SetYes:
-	set RTC_OPT, [hl]
-	ld de, YesString
-	jmp OptionsShared_PlaceStringAtValueCoord
+
+.Strings:
+	table_width 2
+	dw .X6
+	dw .X12
+	dw .X24
+	dw .RTC
+	assert_table_length CLOCK_SPEED_COUNT + 1
+
+.X6:  db "x6 @"
+.X12: db "x12@"
+.X24: db "x24@"
+.RTC: db "RTC@"
 
 InitialOptions_PerfectIVs:
 	ld hl, wInitialOptions
